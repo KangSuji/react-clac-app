@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-clac-app/static/css/main.ca8d32e9.css",
+    "main.js": "/react-clac-app/static/js/main.c542b1f8.js",
+    "static/js/453.8aec8540.chunk.js": "/react-clac-app/static/js/453.8aec8540.chunk.js",
+    "index.html": "/react-clac-app/index.html",
+    "main.ca8d32e9.css.map": "/react-clac-app/static/css/main.ca8d32e9.css.map",
+    "main.c542b1f8.js.map": "/react-clac-app/static/js/main.c542b1f8.js.map",
+    "453.8aec8540.chunk.js.map": "/react-clac-app/static/js/453.8aec8540.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca8d32e9.css",
+    "static/js/main.c542b1f8.js"
+  ]
+}
