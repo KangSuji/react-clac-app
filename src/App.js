@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
+import Altert from "./components/Alert";
 const App = () => {
   const [charge, setCharge] = useState("");
   const [amount, setAmount] = useState(0);
@@ -11,6 +12,8 @@ const App = () => {
     { id: 2, charge: "교통비", amount: 400 },
     { id: 3, charge: "식비", amount: 1200 },
   ]);
+
+  const [alert, setAlert] = useState({ show: false });
 
   const handelCharge = (e) => {
     setCharge(e.target.value);
@@ -23,6 +26,14 @@ const App = () => {
   const handleDelete = (id) => {
     const newExpenses = expenses.filter((expense) => expense.id !== id);
     setExpense(newExpenses);
+    handleAlert({ type: "danger", text: "항목이 삭제되었습니다." });
+  };
+
+  const handleAlert = ({ type, text }) => {
+    setAlert({ show: true, type, text });
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 5000);
   };
 
   const handleSubmit = (e) => {
@@ -33,7 +44,12 @@ const App = () => {
       setExpense(newExpenses);
       setCharge("");
       setAmount(0);
+      handleAlert({ type: "success", text: "항목이 생성되었습니다." });
     } else {
+      handleAlert({
+        type: "danger",
+        text: "지출항목과 비용은 필수입력입니다.",
+      });
       console.error(
         "Invalid input: charge must be non-empty and amount must be greater than 0"
       );
@@ -42,6 +58,7 @@ const App = () => {
 
   return (
     <main className="main-container">
+      {alert.show ? <Altert type={alert.type} text={alert.text} /> : null}
       <h1>예산 계산기</h1>
       <div style={{ width: "100%", backgroundColor: "white", padding: "1rem" }}>
         <ExpenseForm
